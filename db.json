@@ -1,0 +1,16 @@
+{
+    "computers": [
+        {
+            "id": 1,
+            "name": "laptop-1",
+            "domain": "acme.lan",
+            "vendor": "dell"
+        },
+        {
+            "id": 2,
+            "name": "laptop-2",
+            "domain": "acme.lan",
+            "vendor": "hp"
+        }
+    ]
+}
