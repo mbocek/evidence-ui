@@ -7,7 +7,7 @@
     "dev": "run-p dev:server dev:client",
     "dev:client": "rollup -c -w",
     "dev:server": "json-server --watch db.json --routes routes.json",
-    "start": "sirv public --no-clear"
+    "start": "sirv public --no-clear --single"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^21.0.1",
@@ -23,6 +23,7 @@
   },
   "dependencies": {
     "sirv-cli": "^1.0.14",
+    "svelte-routing": "^1.6.0",
     "sveltestrap": "^5.6.3"
   }
 }
