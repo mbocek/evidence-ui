@@ -65,6 +65,9 @@ button:focus {
 /*
  * Sidebar customization
  */
+.sidebar {
+}
+
 .sidebar .nav-link.active {
 	color: #007bff;
 }
