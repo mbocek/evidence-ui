@@ -1,7 +1,9 @@
 <script>
-    import { Router, Route, navigate } from "svelte-routing";
-    import { Navbar, NavbarBrand, Nav, NavItem, NavLink, Container, Row, ListGroup, ListGroupItem } from "sveltestrap";
+    import { Router, Route, navigate, Link } from "svelte-routing";
+    import { Navbar, NavbarBrand, Nav, Container, Row } from "sveltestrap";
     import Computers from "./computer/Computers.svelte";
+    import ComputerDetail from "./computer/ComputerDetail.svelte";
+    import ComputerCreate from "./computer/ComputerCreate.svelte";
     import NavigationItem from "./component/NavigationItem.svelte";
 
     export let url = "";
@@ -25,10 +27,12 @@
             </Nav>
         </Navbar>
         <main role="main" class="col-md-10">
-            <Container>
+            <Container class="pt-3">
                 <Router {url}>
                     <Route path="/">Home page</Route>
                     <Route path="/computers"><Computers/></Route>
+                    <Route path="/computers/:id" let:params><ComputerDetail id="{params.id}"/></Route>
+                    <Route path="/computers/new" let:params><ComputerCreate/></Route>
                 </Router>
             </Container>
         </main>

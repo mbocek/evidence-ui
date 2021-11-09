@@ -1,5 +1,6 @@
 <script>
-    import { Container, Table } from "sveltestrap";
+    import { Table, Row, Col } from "sveltestrap";
+    import { Link } from "svelte-routing";
 
     import { onMount } from "svelte";
     import { httpGet } from "../common/api.js";
@@ -11,13 +12,17 @@
     });
 </script>
 
-<Table>
+<Row>
+    <Col><Link to="/computers/new"><i class="fa fa-plus float-end" /></Link></Col>
+</Row>
+
+<Table striped hover>
     <thead>
         <tr>
             <th>#</th>
             <th>Name</th>
             <th>Domain</th>
-            <th>Vendor</th>
+            <th colspan="2">Vendor</th>
         </tr>
     </thead>
     <tbody>
@@ -27,6 +32,7 @@
                 <td>{computer.name}</td>
                 <td>{computer.domain}</td>
                 <td>{computer.vendor}</td>
+                <td><Link to="/computers/{computer.id}"><i class="fa fa-info"></i></Link><i class="fa fa-trash"></i></td>
             </tr>
         {/each}
     </tbody>

@@ -12,6 +12,10 @@ export function httpPut(path, data) {
     return req(path, 'PUT', data)
 }
 
+export function httpDelete(path, data) {
+    return req(path, 'DELETE', data)
+}
+
 async function req(path, method = 'GET', data) {
     const res = await fetch(apiUrl + path, {
         method,

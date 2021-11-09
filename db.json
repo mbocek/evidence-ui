@@ -1,16 +1,28 @@
 {
-    "computers": [
-        {
-            "id": 1,
-            "name": "laptop-1",
-            "domain": "acme.lan",
-            "vendor": "dell"
-        },
-        {
-            "id": 2,
-            "name": "laptop-2",
-            "domain": "acme.lan",
-            "vendor": "hp"
-        }
-    ]
+  "computers": [
+    {
+      "id": 1,
+      "name": "laptop-1",
+      "domain": "acme.lan",
+      "vendor": "dell"
+    },
+    {
+      "id": 2,
+      "name": "laptop-2",
+      "domain": "acme.lan",
+      "vendor": "hp"
+    },
+    {
+      "id": 3,
+      "vendor": "acer",
+      "domain": "domain1",
+      "name": "laptop-3"
+    },
+    {
+      "vendor": "asus",
+      "domain": "acme.lan",
+      "name": "laptop-4",
+      "id": 4
+    }
+  ]
 }
