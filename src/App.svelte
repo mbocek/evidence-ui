@@ -1,16 +1,18 @@
 <script>
-    import { Router, Route, navigate, Link } from "svelte-routing";
-    import { Navbar, NavbarBrand, Nav, Container, Row } from "sveltestrap";
-    import Computers from "./computer/Computers.svelte";
-    import ComputerDetail from "./computer/ComputerDetail.svelte";
-    import ComputerCreate from "./computer/ComputerCreate.svelte";
+    import Fa from 'svelte-fa'
+    import { faDesktop } from '@fortawesome/free-solid-svg-icons'
+    import { Router, Route, navigate } from "svelte-routing";
+    import { Navbar, NavbarBrand, Nav, NavItem, NavLink, Container, Row, ListGroup, ListGroupItem } from "sveltestrap";
+
     import NavigationItem from "./component/NavigationItem.svelte";
+    import Computers from "./computer/Computers.svelte";
+    import ComputerCreate from "./computer/ComputerCreate.svelte";
+    import ComputerDetail from "./computer/ComputerDetail.svelte";
 
     export let url = "";
 </script>
 
 <svelte:head>
-    <link href="/fontawesome/css/all.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css">
 </svelte:head>
 
@@ -23,16 +25,19 @@
     <Row>
         <Navbar class="col-md-2 d-md-block bg-light sidebar" container=''>
             <Nav class="flex-column">
-                <NavigationItem to="/computers" icon="desktop">Computers</NavigationItem>
+                <NavigationItem to="/computers">
+                    <Fa icon={faDesktop} class="nav-icon" />
+                    Computers
+                </NavigationItem>
             </Nav>
         </Navbar>
-        <main role="main" class="col-md-10">
-            <Container class="pt-3">
+        <main role="main" class="col-md-10 mt-4 mb-4">
+            <Container>
                 <Router {url}>
                     <Route path="/">Home page</Route>
                     <Route path="/computers"><Computers/></Route>
                     <Route path="/computers/:id" let:params><ComputerDetail id="{params.id}"/></Route>
-                    <Route path="/computers/new" let:params><ComputerCreate/></Route>
+                    <Route path="/computers/new"><ComputerCreate/></Route>
                 </Router>
             </Container>
         </main>

@@ -23,7 +23,9 @@
     "svelte": "^3.44.1"
   },
   "dependencies": {
+    "@fortawesome/free-solid-svg-icons": "^5.15.4",
     "sirv-cli": "^1.0.14",
+    "svelte-fa": "^2.3.3",
     "svelte-routing": "^1.6.0",
     "sveltestrap": "^5.6.3"
   }
