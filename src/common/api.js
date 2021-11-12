@@ -1,4 +1,4 @@
-export const apiUrl = "API_ENDPOINT" + '/api'
+export const apiUrl = 'API_ENDPOINT' + '/api'
 
 export function httpGet(path) {
     return req(path)

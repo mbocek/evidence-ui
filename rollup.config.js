@@ -73,7 +73,7 @@ export default {
 
         replace({
             preventAssignment: true,
-            'API_ENDPOINT': production ? '' : 'http://localhost:3000'
+            API_ENDPOINT: production ? '' : 'http://localhost:3000'
         })
     ],
     watch: {
