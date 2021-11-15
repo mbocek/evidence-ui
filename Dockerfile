@@ -20,4 +20,4 @@ ENV HOST=0.0.0.0
 
 USER node
 
-CMD [ "node", "start" ]
+CMD [ "npm", "start" ]
