@@ -18,5 +18,13 @@
       "name": "laptop-3",
       "id": 3
     }
+  ],
+  "addresses": [
+    {
+      "zip": "25088",
+      "city": "Celakovice",
+      "street": "Jiraskova 243",
+      "id": 1
+    }
   ]
 }

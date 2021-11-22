@@ -3,39 +3,39 @@
     import { Form, FormGroup, Input, Label, Button, Card, CardHeader, CardBody, Col, Row } from "sveltestrap";
     import { httpPost } from "../common/api.js";
 
-    let computer = {};
+    let address = {};
 
     async function handleSubmit(event) {
         event.preventDefault();
-        const { ok } = await httpPost("/computers", computer);
+        const { ok } = await httpPost("/addresses", address);
         if (ok) {
-            navigate("/computers");
+            navigate("/addresses");
         }
     }
 </script>
 
 <Card>
     <CardHeader>
-        Computer details
+        Address details
     </CardHeader>
     <CardBody>
         <Form on:submit={handleSubmit}>
             <FormGroup row>
-                <Label for="name" sm="2">Name</Label>
+                <Label for="street" sm="2">Street</Label>
                 <Col sm="10">
-                    <Input id="name" placeholder="Computer name" bind:value={computer.name} />
+                    <Input id="street" placeholder="Address street" bind:value={address.street} />
                 </Col>
             </FormGroup>
             <FormGroup row>
-                <Label for="domain" sm="2">Domain</Label>
+                <Label for="city" sm="2">City</Label>
                 <Col sm="10">
-                    <Input id="domain" placeholder="Computer domain" bind:value={computer.domain} />
+                    <Input id="city" placeholder="Address city" bind:value={address.city} />
                 </Col>
             </FormGroup>
             <FormGroup row>
-                <Label for="vendor" sm="2">Vendor</Label>
+                <Label for="zip" sm="2">Zip</Label>
                 <Col sm="10">
-                    <Input id="vendor" placeholder="Computer vendor" bind:value={computer.vendor} />
+                    <Input id="zip" placeholder="Address zip" bind:value={address.zip} />
                 </Col>
             </FormGroup>
             <Row>
