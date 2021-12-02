@@ -4,7 +4,11 @@
       "vendor": "dell",
       "domain": "acme.lan",
       "name": "laptop-1",
-      "id": 1
+      "id": 1,
+      "purchaseDate": "2021-11-01",
+      "locality": {
+        "id": 2
+      }
     },
     {
       "vendor": "acer",
@@ -17,6 +21,16 @@
       "domain": "acme.lan",
       "name": "laptop-3",
       "id": 3
+    },
+    {
+      "locality": {
+        "id": 2
+      },
+      "purchaseDate": "2021-12-02",
+      "vendor": "hp",
+      "domain": "acme.lan",
+      "name": "laptop-5",
+      "id": 4
     }
   ],
   "addresses": [
@@ -25,6 +39,12 @@
       "city": "Celakovice",
       "street": "Jiraskova 243",
       "id": 1
+    },
+    {
+      "zip": "28916",
+      "city": "Prerov nad Labem",
+      "street": "U Rybnika 13",
+      "id": 2
     }
   ]
 }
