@@ -4,7 +4,7 @@
     import { onMount } from "svelte";
     import { httpPost, httpGet } from "../common/api.js";
 
-    let computer = {"locality": {}};
+    let computer = {};
     let addresses = [];
 
     onMount(async function () {
