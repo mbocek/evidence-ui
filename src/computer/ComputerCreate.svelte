@@ -54,9 +54,9 @@
             <FormGroup row>
                 <Label for="locality" sm="2">Address</Label>
                 <Col sm="10">
-                    <Input type="select" id="locality" bind:value={computer.locality.id}>
+                    <Input type="select" id="locality" bind:value={computer.locality}>
                     {#each addresses as address}
-                        <option value="{address.id}" selected={computer.locality.id === address.id}>{address.city} - {address.street}</option>
+                        <option value="{address}">{address.city} - {address.street}</option>
                     {/each}
                     </Input>
                 </Col>
