@@ -3,23 +3,34 @@
     import { Form, FormGroup, Input, Label, Button, Card, CardHeader, CardBody, Col, Row } from "sveltestrap";
     import { onMount } from "svelte";
     import { httpPut, httpGet } from "../common/api.js";
+    import ErrorMessage from "../component/ErrorMessage.svelte";
 
     export let id;
     let address = {};
+    let error;
 
     onMount(async function () {
-        const { data } = await httpGet("/addresses/" + id);
-        address = data;
+        let result = await httpGet("/addresses/" + id);
+        if (result.ok) {
+            address = result.data;
+        } else {
+            error = result.data;
+        }
+
     });
 
     async function handleSubmit(event) {
         event.preventDefault();
-        const { ok } = await httpPut("/addresses/" + address.id, address);
-        if (ok) {
+        let result = await httpPut("/addresses/" + address.id, address);
+        if (result.ok) {
             navigate("/addresses");
+        } else {
+            error = result.data;
         }
     }
 </script>
+
+<ErrorMessage error={error} />
 
 <Card>
     <CardHeader>

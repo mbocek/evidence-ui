@@ -4,22 +4,34 @@
     import { onMount } from "svelte";
     import { httpPost, httpGet } from "../common/api.js";
 
+    import ErrorMessage from "../component/ErrorMessage.svelte";
+
     let computer = {};
     let addresses = [];
+    let error;
 
     onMount(async function () {
-        const {data} = await httpGet("/addresses");
-        addresses = data;
+        let result = await httpGet("/addresses");
+        if (result.ok) {
+            addresses = result.data;
+            computer.locality = addresses[0];
+        } else {
+            error = result.data;
+        }
     });
 
     async function handleSubmit(event) {
         event.preventDefault();
-        const { ok } = await httpPost("/computers", computer);
-        if (ok) {
+        let result = await httpPost("/computers", computer);
+        if (result.ok) {
             navigate("/computers");
+        } else {
+            error = result.data;
         }
     }
 </script>
+
+<ErrorMessage error={error} />
 
 <Card>
     <CardHeader>
@@ -56,7 +68,7 @@
                 <Col sm="10">
                     <Input type="select" id="locality" bind:value={computer.locality}>
                     {#each addresses as address}
-                        <option value="{address}">{address.city} - {address.street}</option>
+                        <option value="{address}" selected={computer.locality.id === address.id}>{address.city} - {address.street}</option>
                     {/each}
                     </Input>
                 </Col>

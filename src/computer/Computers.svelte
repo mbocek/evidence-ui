@@ -6,21 +6,34 @@
 
     import { onMount } from "svelte";
     import { httpGet, httpDelete } from "../common/api.js";
+    import ErrorMessage from "../component/ErrorMessage.svelte";
 
     let computers = [];
+    let error;
+
     onMount(async function () {
-        const { data } = await httpGet("/computers");
-        computers = data;
+        let result = await httpGet("/computers");
+        if (result.ok) {
+            computers = result.data;
+        } else {
+            error = result.data;
+        }
     });
 
     async function handleDelete(id) {
-        const {ok} = await httpDelete("/computers/" + id);
-        if (ok) {
-            const { data } = await httpGet("/computers");
-            computers = data;
+        let result = await httpDelete("/computers/" + id);
+        if (result.ok) {
+            result = await httpGet("/computers");
+            if (result.ok) {
+                computers = result.data;
+            } else {
+                error = result.data;
+            }
         }
     };
 </script>
+
+<ErrorMessage error={error} />
 
 <Card>
     <CardHeader>

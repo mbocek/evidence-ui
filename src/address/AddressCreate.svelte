@@ -2,17 +2,23 @@
     import { navigate } from "svelte-routing";
     import { Form, FormGroup, Input, Label, Button, Card, CardHeader, CardBody, Col, Row } from "sveltestrap";
     import { httpPost } from "../common/api.js";
+    import ErrorMessage from "../component/ErrorMessage.svelte";
 
     let address = {};
+    let error;
 
     async function handleSubmit(event) {
         event.preventDefault();
-        const { ok } = await httpPost("/addresses", address);
-        if (ok) {
+        let result = await httpPost("/addresses", address);
+        if (result.ok) {
             navigate("/addresses");
+        } else {
+            error = result.data;
         }
     }
 </script>
+
+<ErrorMessage error={error} />
 
 <Card>
     <CardHeader>
